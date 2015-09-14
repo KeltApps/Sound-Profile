@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 
 public class ProfilesActivity extends AppCompatActivity{
     ArrayList<Profile> listProfileAdapters = null;
-    Context context;
+    public static Context context;
     RecyclerView recyclerView;
 
     @Override
@@ -26,6 +25,7 @@ public class ProfilesActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiles);
         context = this;
+
 
         if (listProfileAdapters == null)
             listProfileAdapters = new ArrayList<Profile>();
@@ -105,20 +105,14 @@ public class ProfilesActivity extends AppCompatActivity{
         profile.setActivado(false);
         profile.setNombre("Prueba19");
         recyclerView = (RecyclerView) findViewById(R.id.profiles_recyclerview);
-        recyclerView.setHasFixedSize(true);
-        final ProfileAdapter profileAdapter = new ProfileAdapter(listProfileAdapters,recyclerView);
-      profileAdapter.setOnTouchListener(new View.OnTouchListener() {
+        final ProfileAdapter profileAdapter = new ProfileAdapter(listProfileAdapters, recyclerView);
+    /*  profileAdapter.setOnTouchListener(new View.OnTouchListener() {
           @Override
           public boolean onTouch(View v, MotionEvent event) {
-              if (event.getAction() == MotionEvent.ACTION_DOWN)
-                  v.setBackgroundColor(getResources().getColor(R.color.white_dark));
-              else if (event.getAction() == MotionEvent.ACTION_UP) {
-                  v.setBackgroundColor(getResources().getColor(R.color.white));
-              } else if (event.getAction() == MotionEvent.ACTION_MOVE)
-                  v.setBackgroundColor(getResources().getColor(R.color.white));
+
               return true;
           }
-      });
+      });*/
         recyclerView.setAdapter(profileAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -213,7 +207,6 @@ public class ProfilesActivity extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_profiles, menu);
-
         return true;
     }
 
@@ -231,4 +224,5 @@ public class ProfilesActivity extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
 }

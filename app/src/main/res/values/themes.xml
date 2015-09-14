@@ -3,15 +3,17 @@
     <!-- the theme applied to the application or activity -->
     <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
-        <item name="android:color">@color/violet</item>
+        <item name="android:color">@color/purple_800</item>
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="colorAccent">@color/purple_icons</item>
+        <item name="colorSwitchThumbNormal">@color/purple_100</item>
     </style>
 
     <!-- ActionBar styles -->
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/violet</item>
+        <item name="android:background">@color/purple_800</item>
         <!-- Support library compatibility -->
-        <item name="background">@color/violet</item>
+        <item name="background">@color/purple_800</item>
     </style>
 </resources>

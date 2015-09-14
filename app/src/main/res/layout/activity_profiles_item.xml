@@ -27,7 +27,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="20dp">
@@ -79,122 +78,131 @@
                         android:layout_height="wrap_content">
 
                         <Button
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:background="@android:color/transparent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/profiles_item_buttonEditTime1"
+                            android:layout_width="70dp"
+                            android:layout_height="30dp"
                             android:background="@android:color/transparent"
                             android:text="09:00"
+                            android:textColor="@color/purple_icons"
+                            android:textStyle="bold"
+                            android:textSize="25sp"/>
 
-                            android:textSize="17sp" />
                     </RelativeLayout>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:textColor="@color/purple_icons"
                         android:text=" - "
-                        android:textSize="17sp" />
+
+                        android:textStyle="bold"
+                        android:textSize="25sp" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <Button
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:background="@android:color/transparent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
+                            android:id="@+id/profiles_item_buttonEditTime2"
+                            android:layout_width="70dp"
+                            android:layout_height="30dp"
                             android:background="@android:color/transparent"
+                            android:text="17:00"
+                            android:textColor="@color/purple_icons"
 
-                            android:text="13:00"
-                            android:textSize="17sp" />
+                            android:textStyle="bold"
+                            android:textSize="25sp"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:paddingTop="5dp"
-                    android:layout_weight="1">
+                    android:layout_marginTop="10dp">
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:id="@+id/profiles_item_daysL"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="L" />
-
-                    <Button
-
+                    <View
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" >
+                    </View>
+                    <Button
+                        android:id="@+id/profiles_item_daysM"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="M" />
-
-                    <Button
-
+                    <View
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" >
+                    </View>
+                    <Button
+                        android:id="@+id/profiles_item_daysX"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="X" />
-
-                    <Button
-
+                    <View
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" >
+                    </View>
+                    <Button
+                        android:id="@+id/profiles_item_daysJ"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="J" />
-
-                    <Button
-
+                    <View
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" >
+                    </View>
+                    <Button
+                        android:id="@+id/profiles_item_daysV"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="V" />
-
-                    <Button
-
+                    <View
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" >
+                    </View>
+                    <Button
+                        android:id="@+id/profiles_item_daysS"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="S" />
-
-                    <Button
-
+                    <View
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" >
+                    </View>
+                    <Button
+                        android:id="@+id/profiles_item_daysD"
+                        android:layout_width="@dimen/profiles_item_days"
+                        android:layout_height="@dimen/profiles_item_days"
                         android:background="@drawable/roundedbutton"
+                        android:textColor="@color/white"
                         android:text="D" />
-
-                </LinearLayout>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1" >
+                    </View>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -202,8 +210,11 @@
                     android:orientation="horizontal">
 
                     <ImageButton
+                        android:id="@+id/profiles_item_imagebuttonEditWifi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
                         android:background="@android:color/transparent"
                         android:src="@drawable/ic_action_wifi" />
 
@@ -211,6 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:layout_gravity="center"
                         android:text="WLAN_54" />
                 </LinearLayout>
 
@@ -220,15 +232,18 @@
                     android:orientation="horizontal">
 
                     <ImageButton
+                        android:id="@+id/profiles_item_imagebuttonEditBluetooth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/ic_action_bluetooth" />
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_bluetooth_disabled_grey_400_24dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:layout_gravity="center"
                         android:text="CAR MULTIMEDIA" />
                 </LinearLayout>
 
