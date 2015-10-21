@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profiles_item_cardview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/purple_300"
+    app:cardMaxElevation="2dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:id="@+id/profiles_item_linearlayout_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <Button
+                    android:id="@+id/profiles_item_buttonName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:maxLines="1"
+                    android:maxWidth="180dp"
+                    android:paddingBottom="20dp"
+                    android:scrollHorizontally="true"
+                    android:text="Dormir"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:typeface="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right">
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/profiles_item_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:theme="@style/SwitchThumb" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/profiles_item_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/CheckBox" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/profiles_item_buttonEditTime1"
+                            android:layout_width="70dp"
+                            android:layout_height="35dp"
+                            android:background="@android:color/transparent"
+                            android:text="09:00"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/profiles_item_textviewguion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:textColor="@color/white"
+
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/profiles_item_buttonEditTime2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="left|center"
+                            android:text="17:00"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysL"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.monday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"></View>
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysM"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.tuesday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"></View>
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysX"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.wednesday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"></View>
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysJ"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.thursday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"></View>
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysV"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.friday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"></View>
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysS"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.saturday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"></View>
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        app:rv_centered="true"
+                        app:rv_color="@color/grey_400">
+
+                        <Button
+                            android:id="@+id/profiles_item_daysD"
+                            android:layout_width="@dimen/profiles_item_days"
+                            android:layout_height="@dimen/profiles_item_days"
+                            android:background="@drawable/roundedbutton"
+                            android:text="@string/week.sunday"
+                            android:textColor="@color/purple_300" />
+                    </com.keltapps.soundprofile.views.RippleView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"></View>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:id="@+id/profiles_item_rippleWifi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:transitionName="wifiImageViewBackground"
+                        app:rv_color="@color/grey_400">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/profiles_item_imageViewEditWifi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:paddingBottom="5dp"
+                                android:paddingRight="5dp"
+                                android:src="@drawable/ic_network_wifi_white_24dp"
+                                android:transitionName="wifiImageView" />
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:scrollbars="none">
+
+                                <TextView
+                                    android:id="@+id/profiles_item_textViewWifi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="left|center"
+                                    android:maxLines="1"
+                                    android:scrollHorizontally="true"
+                                    android:text="WLAN_54"
+                                    android:textColor="@color/white" />
+                            </HorizontalScrollView>
+                        </LinearLayout>
+                    </com.keltapps.soundprofile.views.RippleView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.keltapps.soundprofile.views.RippleView
+                        android:id="@+id/profiles_item_rippleBluetooth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:rv_color="@color/grey_400">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/profiles_item_imageViewEditBluetooth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:paddingBottom="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="5dp"
+                                android:src="@drawable/ic_bluetooth_white_24dp" />
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:scrollbars="none">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="CAR MULTIMEDIA"
+                                android:textColor="@color/white" />
+                            </HorizontalScrollView>
+                        </LinearLayout>
+                    </com.keltapps.soundprofile.views.RippleView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@color/white" />
+
+
+            <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/profiles_item_coordinatorlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:context="com.keltapps.soundprofile.ProfilesActivity">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/profiles_item_recyclerview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/profiles_item_relativelayout_imageviewmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/profiles_item_linearlayout_contenido"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/profiles_item_imagebuttonDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:background="@android:color/transparent"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_delete_white_24dp" />
+
+            <com.keltapps.soundprofile.views.RippleView
+                android:id="@+id/profiles_item_rippleimageviewMore"
+                android:layout_width="?android:actionBarSize"
+                android:layout_height="?android:actionBarSize"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                app:rv_centered="true"
+                app:rv_color="@color/grey_400">
+
+                <ImageView
+                    android:id="@+id/profiles_item_imageviewMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
+            </com.keltapps.soundprofile.views.RippleView>
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

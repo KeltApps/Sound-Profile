@@ -4,4 +4,22 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_profiles">ProfilesActivity</string>
+    <!-- Week days -->
+    <string name="week.monday">L</string>
+    <string name="week.tuesday">M</string>
+    <string name="week.wednesday">X</string>
+    <string name="week.thursday">J</string>
+    <string name="week.friday">V</string>
+    <string name="week.saturday">S</string>
+    <string name="week.sunday">D</string>
+    
+    <string name="information.wifi">Seleccione red Wifi condicionante</string>
+
+    <string name="clock.none">Ninguno</string>
+
+    <string name="button.next">Siguiente</string>
+
+    <string name="menu.wifi.add">Añadir wifi</string>
+    <string name="dialog.wifi.add.possitive">Aceptar</string>
+    <string name="dialog.wifi.add.negative">Cancelar</string>
 </resources>

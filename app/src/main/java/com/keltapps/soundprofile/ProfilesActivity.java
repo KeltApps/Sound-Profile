@@ -1,206 +1,34 @@
 package com.keltapps.soundprofile;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.view.Window;
+
+import com.keltapps.soundprofile.fragments.ProfilesFragment;
+import com.keltapps.soundprofile.fragments.WifiFragment;
 
 import java.util.ArrayList;
 
 
-public class ProfilesActivity extends AppCompatActivity{
-    ArrayList<Profile> listProfileAdapters = null;
+public class ProfilesActivity extends AppCompatActivity implements WifiFragment.OnWifiSelectedListener {
     public static Context context;
-    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiles);
         context = this;
-
-
-        if (listProfileAdapters == null)
-            listProfileAdapters = new ArrayList<Profile>();
-        Profile profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba2");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba3");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba4");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueb5");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba6");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba7");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba8");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba9");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba10");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba11");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba12");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba13");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba14");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba15");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba16");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba17");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba18");
-        listProfileAdapters.add(profile);
-        profile = new Profile();
-        profile.setActivado(false);
-        profile.setNombre("Prueba19");
-        recyclerView = (RecyclerView) findViewById(R.id.profiles_recyclerview);
-        final ProfileAdapter profileAdapter = new ProfileAdapter(listProfileAdapters, recyclerView);
-    /*  profileAdapter.setOnTouchListener(new View.OnTouchListener() {
-          @Override
-          public boolean onTouch(View v, MotionEvent event) {
-
-              return true;
-          }
-      });*/
-        recyclerView.setAdapter(profileAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-
-
-
-/*
-       Button btnInsertar = (Button)findViewById(R.id.BtnInsertar);
-
-        btnInsertar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Profile profile = new Profile();
-                profile.setActivado(false);
-                profile.setNombre("Prueba");
-                listProfileAdapters.add(profile);
-                profileAdapter.notifyItemInserted(1);
-            }
-        });
-
-       Button btnEliminar = (Button)findViewById(R.id.BtnEliminar);
-
-        btnEliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listProfileAdapters.remove(1);
-                profileAdapter.notifyItemRemoved(1);
-            }
-        });
-
-        Button btnMover = (Button)findViewById(R.id.BtnMover);
-
-        btnMover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Profile aux = listProfileAdapters.get(1);
-                listProfileAdapters.set(1, listProfileAdapters.get(2));
-                listProfileAdapters.set(2, aux);
-
-                profileAdapter.notifyItemMoved(1, 2);
-            }
-        });*/
-
-
-        /*ProfileAdapter profileAdapter = new ProfileAdapter(context, listProfileAdapters);
-        listView.setAdapter(profileAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ((Activity)context).finish();
-            }
-        });*/
-    /*    Snackbar.make(this.findViewById(R.id.profiles_coordinatorlayout), "Prueba", Snackbar.LENGTH_LONG)
-                .setAction("Action", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                })
-                .show();*/
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.profiles_floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-        /*        Profile profile = new Profile();
-                profile.setActivado(false);
-                profile.setNombre("Prueba");
-                listProfileAdapters.add(profile);
-                profileAdapter.notifyItemInserted(listProfileAdapters.size());
-
-*/
-                Profile aux = listProfileAdapters.get(1);
-                listProfileAdapters.set(1, listProfileAdapters.get(2));
-                listProfileAdapters.set(2, aux);
-
-                profileAdapter.notifyItemMoved(1, 2);
-            }
-        });
-       /* ImageButton imageButton = (ImageButton) findViewById(R.id.profiles_item_buttonMore);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ProfilesFragment profilesFragment = new ProfilesFragment();
+        fragmentTransaction.add(R.id.profiles_fragment_container, profilesFragment, "Profiles");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -224,5 +52,36 @@ public class ProfilesActivity extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onWifiSelected(ArrayList<String> listWifiSelected, int profilePosition) {
+        ProfilesFragment profilesFragment = (ProfilesFragment)
+                getFragmentManager().findFragmentByTag("Profiles");
+
+        if (profilesFragment != null) {
+            profilesFragment.updateWifiSelected(listWifiSelected, profilePosition);
+            getFragmentManager().popBackStack();
+        } else {
+            // Otherwise, we're in the one-pane layout and must swap frags...
+
+            // Create fragment and give it an argument for the selected article
+            ProfilesFragment newProfilesFragment = new ProfilesFragment();
+            Bundle args = new Bundle();
+            args.putStringArrayList("listWifiSelected", listWifiSelected);
+            args.putInt("profilePosition", profilePosition);
+            newProfilesFragment.setArguments(args);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack so the user can navigate back
+            transaction.replace(R.id.profiles_fragment_container, newProfilesFragment);
+            transaction.addToBackStack(null);
+
+            // Commit the transaction
+            transaction.commit();
+        }
+    }
+
 
 }

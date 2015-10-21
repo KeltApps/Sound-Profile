@@ -1,30 +1,7 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profiles_coordinatorlayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/purple_100"
-    android:orientation="vertical"
-    tools:context="com.keltapps.soundprofile.ProfilesActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profiles_fragment_container"
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/profiles_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="70dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/profiles_floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_action_add"
-        app:backgroundTint="@color/purple_800"
-        app:borderWidth="0dp"
-        app:layout_anchor="@id/profiles_coordinatorlayout"
-        app:layout_anchorGravity="bottom|right|end" />
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
