@@ -9,13 +9,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.keltapps.soundprofile.fragments.BluetoothFragment;
 import com.keltapps.soundprofile.fragments.ProfilesFragment;
 import com.keltapps.soundprofile.fragments.WifiFragment;
 
 import java.util.ArrayList;
 
 
-public class ProfilesActivity extends AppCompatActivity implements WifiFragment.OnWifiSelectedListener {
+public class ProfilesActivity extends AppCompatActivity implements WifiFragment.OnWifiSelectedListener,BluetoothFragment.OnBluetoothSelectedListener {
     public static Context context;
 
     @Override
@@ -84,4 +85,33 @@ public class ProfilesActivity extends AppCompatActivity implements WifiFragment.
     }
 
 
+    @Override
+    public void onBluetoothSelected(ArrayList<String> listBluetoothSelected, int profilePosition) {
+        ProfilesFragment profilesFragment = (ProfilesFragment)
+                getFragmentManager().findFragmentByTag("Profiles");
+
+        if (profilesFragment != null) {
+            profilesFragment.updateBluetoothSelected(listBluetoothSelected, profilePosition);
+            getFragmentManager().popBackStack();
+        } else {
+            // Otherwise, we're in the one-pane layout and must swap frags...
+
+            // Create fragment and give it an argument for the selected article
+            ProfilesFragment newProfilesFragment = new ProfilesFragment();
+            Bundle args = new Bundle();
+            args.putStringArrayList("listBluetoothSelected", listBluetoothSelected);
+            args.putInt("profilePosition", profilePosition);
+            newProfilesFragment.setArguments(args);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack so the user can navigate back
+            transaction.replace(R.id.profiles_fragment_container, newProfilesFragment);
+            transaction.addToBackStack(null);
+
+            // Commit the transaction
+            transaction.commit();
+        }
+    }
 }

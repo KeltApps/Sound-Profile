@@ -13,7 +13,8 @@
     <string name="week.saturday">S</string>
     <string name="week.sunday">D</string>
     
-    <string name="information.wifi">Seleccione red Wifi condicionante</string>
+    <string name="information.wifi">Seleccione redes Wifi condicionantes</string>
+    <string name="information.bluetooth">Seleccione Bluetooth condicionantes</string>
 
     <string name="clock.none">Ninguno</string>
 
@@ -22,4 +23,9 @@
     <string name="menu.wifi.add">Añadir wifi</string>
     <string name="dialog.wifi.add.possitive">Aceptar</string>
     <string name="dialog.wifi.add.negative">Cancelar</string>
+    <string name="dialog.wifi.enabled">Adaptador Wifi apagado, para ver las redes disponibles es necesario que se encuentre activado, ¿Desea activarlo?</string>
+    <string name="dialog.wifi.dontshowagain">No mostrar de nuevo</string>
+
+    <string name="dialog.bluetooth.enabled">Adaptador Bluetooth apagado, para ver los dispositivos disponibles es necesario que se encuentre activado, ¿Desea activarlo?</string>
+    <string name="dialog.delete">¿Está seguro de que desea eliminarlo?</string>
 </resources>

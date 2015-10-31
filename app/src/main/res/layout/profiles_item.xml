@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="3dp"
     android:layout_marginRight="3dp"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:foreground="?attr/selectableItemBackground"
     app:cardBackgroundColor="@color/purple_300"
     app:cardMaxElevation="2dp"
     card_view:cardCornerRadius="2dp"
@@ -23,7 +23,7 @@
             android:id="@+id/profiles_item_linearlayout_contenido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:paddingBottom="40dp">
 
@@ -38,30 +38,28 @@
                     android:id="@+id/profiles_item_buttonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:background="@android:color/transparent"
+                    android:background="?attr/selectableItemBackground"
                     android:ellipsize="marquee"
-                    android:gravity="left"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:maxLines="1"
                     android:maxWidth="180dp"
-                    android:paddingBottom="20dp"
                     android:scrollHorizontally="true"
                     android:text="Dormir"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
                     android:textSize="23sp"
                     android:typeface="normal" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="right">
 
                     <android.support.v7.widget.SwitchCompat
                         android:id="@+id/profiles_item_switch"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
                         android:theme="@style/SwitchThumb" />
@@ -94,7 +92,7 @@
                             android:id="@+id/profiles_item_buttonEditTime1"
                             android:layout_width="70dp"
                             android:layout_height="35dp"
-                            android:background="@android:color/transparent"
+                            android:background="?attr/selectableItemBackground"
                             android:text="09:00"
                             android:textColor="@color/white"
                             android:textSize="25sp" />
@@ -117,7 +115,7 @@
                             android:id="@+id/profiles_item_buttonEditTime2"
                             android:layout_width="wrap_content"
                             android:layout_height="35dp"
-                            android:background="@android:color/transparent"
+                            android:background="?attr/selectableItemBackground"
                             android:gravity="left|center"
                             android:text="17:00"
                             android:textAllCaps="false"
@@ -290,6 +288,7 @@
                         android:id="@+id/profiles_item_rippleWifi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
                         android:transitionName="wifiImageViewBackground"
                         app:rv_color="@color/grey_400">
 
@@ -340,6 +339,8 @@
                         android:id="@+id/profiles_item_rippleBluetooth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:transitionName="bluetoothImageViewBackground"
                         app:rv_color="@color/grey_400">
 
                         <LinearLayout
@@ -356,20 +357,24 @@
                                 android:paddingBottom="5dp"
                                 android:paddingRight="5dp"
                                 android:paddingTop="5dp"
-                                android:src="@drawable/ic_bluetooth_white_24dp" />
+                                android:src="@drawable/ic_bluetooth_white_24dp"
+                                android:transitionName="bluetoothImageView" />
+
                             <HorizontalScrollView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:paddingLeft="20dp"
                                 android:paddingRight="20dp"
                                 android:scrollbars="none">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:gravity="center"
-                                android:text="CAR MULTIMEDIA"
-                                android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/profiles_item_textViewBluetooth"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center"
+                                    android:text="CAR MULTIMEDIA"
+                                    android:textColor="@color/white" />
                             </HorizontalScrollView>
                         </LinearLayout>
                     </com.keltapps.soundprofile.views.RippleView>
@@ -416,7 +421,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"
-                android:background="@android:color/transparent"
+                android:background="?attr/selectableItemBackground"
                 android:paddingBottom="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="5dp"
@@ -436,7 +441,7 @@
                     android:id="@+id/profiles_item_imageviewMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
+                    android:background="?attr/selectableItemBackground"
                     android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
             </com.keltapps.soundprofile.views.RippleView>
         </RelativeLayout>

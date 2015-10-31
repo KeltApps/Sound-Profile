@@ -186,8 +186,11 @@ public class ProfilesFragment extends Fragment {
         listWifiSelected.add("WLAN_54");
         profile.listWifiSelected = listWifiSelected;
         listProfileAdapters.add(profile);
-*/
-
+*//*
+        for (Profile profile: listProfileAdapters) {
+         profile.listBluetoothPaired = new ArrayList<>();
+            profile.listBluetoothPaired.add("CAR MULTIMEDIA");
+        }*/
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.profiles_recyclerview);
         profileAdapter = new ProfileAdapter(listProfileAdapters);
@@ -212,6 +215,11 @@ public class ProfilesFragment extends Fragment {
 
     public void updateWifiSelected(ArrayList<String> listWifiSelected, int profilePosition) {
         listProfileAdapters.get(profilePosition).listWifiSelected = listWifiSelected;
+        saveState(listProfileAdapters);
+    }
+
+    public void updateBluetoothSelected(ArrayList<String> listBluetoothSelected, int profilePosition) {
+        listProfileAdapters.get(profilePosition).listBluetoothPaired = listBluetoothSelected;
         saveState(listProfileAdapters);
     }
 

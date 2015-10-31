@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -38,6 +39,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.keltapps.soundprofile.R;
+import com.keltapps.soundprofile.fragments.BluetoothFragment;
 import com.keltapps.soundprofile.fragments.ProfilesFragment;
 import com.keltapps.soundprofile.fragments.WifiFragment;
 import com.keltapps.soundprofile.views.Profile;
@@ -100,6 +102,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         TextView textViewWifi;
         com.keltapps.soundprofile.views.RippleView rippleViewBluetooth;
         ImageView imageViewBluetooth;
+        TextView textViewBluetooth;
         ImageView imagebuttonDelete;
         ImageView imageViewMore;
         RecyclerView recyclerViewSub;
@@ -131,6 +134,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
             textViewWifi = (TextView) itemView.findViewById(R.id.profiles_item_textViewWifi);
             rippleViewBluetooth = (com.keltapps.soundprofile.views.RippleView) itemView.findViewById(R.id.profiles_item_rippleBluetooth);
             imageViewBluetooth = (ImageView) itemView.findViewById(R.id.profiles_item_imageViewEditBluetooth);
+            textViewBluetooth = (TextView) itemView.findViewById(R.id.profiles_item_textViewBluetooth);
             imagebuttonDelete = (ImageButton) itemView.findViewById(R.id.profiles_item_imagebuttonDelete);
             imageViewMore = (ImageView) itemView.findViewById(R.id.profiles_item_imageviewMore);
             rippleViewMore = (com.keltapps.soundprofile.views.RippleView) itemView.findViewById(R.id.profiles_item_rippleimageviewMore);
@@ -149,6 +153,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 imageViewWifi.setTransitionName("wifi" + position);
                 rippleViewWifi.setTransitionName("wifiBackground" + position);
                 imageViewBluetooth.setTransitionName("bluetooth" + position);
+                rippleViewBluetooth.setTransitionName("bluetoothBackground" + position);
             }
             if (item.getExpandido()) {
                 if (intOriginalHeight != 0) {
@@ -187,7 +192,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                     final EditText editText = (EditText) promptView.findViewById(R.id.dialog_item_name_edittext);
 
                     alertDialogBuilder.setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            .setPositiveButton(ProfilesFragment.profilesFragment.getActivity().getResources().getString(R.string.dialog_wifi_add_possitive), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     String sEditText = editText.getText().toString();
                                     if (!sEditText.matches("") && sEditText.trim().length() > 0) {
@@ -196,7 +201,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                                     }
                                 }
                             })
-                            .setNegativeButton("Cancel",
+                            .setNegativeButton(ProfilesFragment.profilesFragment.getActivity().getResources().getString(R.string.dialog_wifi_add_negative),
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.cancel();
@@ -411,17 +416,73 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                     }
                 }
             });
+            String sBluetoothPaired = "";
+            Boolean initialB = true;
+            for (String bluetooth : item.listBluetoothPaired) {
+                if (initialB) {
+                    sBluetoothPaired = bluetooth;
+                    initialB = false;
+                } else
+                    sBluetoothPaired += ", " + bluetooth;
+            }
+            textViewBluetooth.setText(sBluetoothPaired);
+            textViewBluetooth.setMovementMethod(new ScrollingMovementMethod());
+            //textViewWifi.setText(sWifiSelected);
+            //textViewWifi.setMovementMethod(new ScrollingMovementMethod());
             rippleViewBluetooth.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    ProfilesFragment fragmentOne = ProfilesFragment.profilesFragment;
+                    BluetoothFragment fragmentTwo = new BluetoothFragment();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        Transition changeTransform = TransitionInflater.from(ProfilesFragment.profilesFragment.getActivity()).
+                                inflateTransition(R.transition.change_image_transform);
+                        Transition explodeTransform = TransitionInflater.from(ProfilesFragment.profilesFragment.getActivity()).
+                                inflateTransition(android.R.transition.slide_bottom);
+                        changeTransform.setDuration(500);
+                        explodeTransform.setDuration(300);
+                        fragmentOne.setSharedElementReturnTransition(changeTransform);
+                        //  fragmentOne.setExitTransition(explodeTransform);
+
+                        fragmentTwo.setSharedElementEnterTransition(changeTransform);
+                        fragmentTwo.setEnterTransition(explodeTransform);
+                        Bundle bundle = new Bundle();
+                        bundle.putStringArrayList("bluetoothPairedList", item.listBluetoothPaired);
+                        bundle.putInt("profileIndex", listProfile.indexOf(item));
+                        fragmentTwo.setArguments(bundle);
+                        FragmentTransaction ft = ProfilesFragment.fragmentManager.beginTransaction()
+                                .replace(R.id.profiles_fragment_container, fragmentTwo)
+                                .addToBackStack("transaction")
+                                .addSharedElement(imageViewBluetooth, "bluetoothImageView")
+                                .addSharedElement(rippleViewBluetooth, "bluetoothImageViewBackground");
+                        ft.commit();
+                    }
                 }
             });
             imagebuttonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int index = listProfile.indexOf(item);
-                    listProfile.remove(index);
-                    ProfileAdapter.adapter.notifyItemRemoved(index);
+                    final Dialog dialog = new Dialog(ProfilesFragment.profilesFragment.getActivity());
+                    dialog.setContentView(R.layout.dialog_delete_profile);
+                    Button dialogButtonPositive = (Button) dialog.findViewById(R.id.dialog_deleteprofile_positivebutton);
+                    dialogButtonPositive.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int index = listProfile.indexOf(item);
+                            listProfile.remove(index);
+                            ProfileAdapter.adapter.notifyItemRemoved(index);
+                            dialog.dismiss();
+                        }
+                    });
+                    Button dialogButtonNegative = (Button) dialog.findViewById(R.id.dialog_deleteprofile_negativebutton);
+                    dialogButtonNegative.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+
                 }
             });
             rippleViewMore.setOnClickListener(new View.OnClickListener() {

@@ -2,11 +2,10 @@ package com.keltapps.soundprofile.fragments;
 
 import android.app.Dialog;
 import android.app.Fragment;
-import android.content.Context;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -20,35 +19,34 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.keltapps.soundprofile.ProfilesActivity;
 import com.keltapps.soundprofile.R;
+import com.keltapps.soundprofile.views.BluetoothItem;
 import com.keltapps.soundprofile.views.DividerItemDecoration;
-import com.keltapps.soundprofile.views.WifiItem;
-import com.keltapps.soundprofile.views.adapters.WifiAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 /**
- * Created by sergio on 10/10/15 for KelpApps.
+ * Created by sergio on 21/10/15 for KelpApps.
  */
-public class WifiFragment extends Fragment {
-    OnWifiSelectedListener mCallback;
-    public static WifiFragment wifiFragment;
+public class BluetoothFragment extends Fragment {
+    OnBluetoothSelectedListener mCallback;
+    public static BluetoothFragment bluetoothFragment;
     RecyclerView recyclerView;
-    ArrayList<String> listWifiSelected;
-    ArrayList<WifiItem> listWifi;
-
+    ArrayList<String> listBluetoothSelected;
+    ArrayList<BluetoothItem> listBluetooth;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        wifiFragment = this;
-        View rootView = inflater.inflate(R.layout.fragment_wifi, container, false);
+        bluetoothFragment = this;
+        View rootView = inflater.inflate(R.layout.fragment_bluetooth, container, false);
         Bundle bundle = getArguments();
-        listWifiSelected = bundle.getStringArrayList("wifiSelectedList");
+        listBluetoothSelected = bundle.getStringArrayList("bluetoothPairedList");
         final int profileIndex = bundle.getInt("profileIndex");
         setHasOptionsMenu(true);
         rootView.setFocusableInTouchMode(true);
@@ -58,17 +56,17 @@ public class WifiFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     try {
-                        mCallback = (OnWifiSelectedListener) getActivity();
+                        mCallback = (OnBluetoothSelectedListener) getActivity();
                         ArrayList<String> listRefresh = new ArrayList<>();
-                        for (WifiItem item : listWifi) {
+                        for (BluetoothItem item : listBluetooth) {
                             if (!item.getSelected())
                                 break;
-                            listRefresh.add(item.getSSID());
+                            listRefresh.add(item.getName());
                         }
-                        mCallback.onWifiSelected(listRefresh, profileIndex);
+                        mCallback.onBluetoothSelected(listRefresh, profileIndex);
                     } catch (ClassCastException e) {
                         throw new ClassCastException(getActivity().toString()
-                                + " must implement OnWifiSelectedListener");
+                                + " must implement OnBluetoothSelectedListener");
                     }
                     return true;
                 }
@@ -76,20 +74,18 @@ public class WifiFragment extends Fragment {
             }
         });
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(ProfilesActivity.context);
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putBoolean("showAgainWifiBluetooth", true);
-        editor.commit();
         boolean bShowAgain = sharedPrefs.getBoolean("showAgainWifiBluetooth", true);
-        WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
-        if (!wifiManager.isWifiEnabled() && bShowAgain) {
+        if (!BluetoothAdapter.getDefaultAdapter().isEnabled() && bShowAgain) {
             final Dialog dialog = new Dialog(getActivity());
             dialog.setContentView(R.layout.dialog_checkbox);
+            TextView dialogTextView = (TextView) dialog.findViewById(R.id.dialog_checkbox_textview);
+            dialogTextView.setText(getActivity().getResources().getString(R.string.dialog_bluetooth_enabled));
             final CheckBox dialogCheckBox = (CheckBox) dialog.findViewById(R.id.dialog_checkbox_checkbox);
             Button dialogButtonPositive = (Button) dialog.findViewById(R.id.dialog_checkbox_positivebutton);
             dialogButtonPositive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
                     dialogDontShowAgain(dialogCheckBox);
                     dialog.dismiss();
                 }
@@ -104,65 +100,46 @@ public class WifiFragment extends Fragment {
             });
             dialog.show();
         }
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.fragment_wifi_recyclerview);
-
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.fragment_bluetooth_recyclerview);
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        final WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
-        WifiItem wifiItemCurrent = null;
-        listWifi = new ArrayList<>();
-        if (!wifiManager.isWifiEnabled()) {
-            for (String sWifi : listWifiSelected) {
-                WifiItem wifiItem = new WifiItem();
-                wifiItem.setSSID(sWifi);
-                wifiItem.setConnected(false);
-                wifiItem.setSelected(true);
-                listWifi.add(wifiItem);
+        listBluetooth = new ArrayList<>();
+        Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+        if (!BluetoothAdapter.getDefaultAdapter().isEnabled()) {
+            for (String sBluetooth : listBluetoothSelected) {
+                BluetoothItem bluetoothItem = new BluetoothItem();
+                bluetoothItem.setName(sBluetooth);
+                bluetoothItem.setConnected(false);
+                bluetoothItem.setSelected(true);
+                listBluetooth.add(bluetoothItem);
             }
         } else {
-            List<WifiConfiguration> listWifiConfiguration = wifiManager.getConfiguredNetworks();
-            String currentSSID = wifiManager.getConnectionInfo().getSSID();
-            currentSSID = currentSSID.replaceAll("\"", "");
-            for (WifiConfiguration wifi : listWifiConfiguration) {
-                WifiItem wifiItem = new WifiItem();
-                String ssid = wifi.SSID;
-                ssid = ssid.replaceAll("\"", "");
-                wifiItem.setSSID(ssid);
-                wifiItem.setSelected(false);
-                for (String wifiSelected : listWifiSelected) {
-                    if (wifiSelected.equals(wifiItem.getSSID())) {
-                        wifiItem.setSelected(true);
+            for (BluetoothDevice bluetooth : pairedDevices) {
+                BluetoothItem bluetoothItem = new BluetoothItem();
+                String name = bluetooth.getName();
+                bluetoothItem.setName(name);
+                bluetoothItem.setSelected(false);
+                for (String bluetoothSelected : listBluetoothSelected) {
+                    if (bluetoothSelected.equals(bluetoothItem.getName())) {
+                        bluetoothItem.setSelected(true);
                         break;
                     }
                 }
-                if (currentSSID.equals(ssid)) {
-                    wifiItem.setConnected(true);
-                    wifiItemCurrent = wifiItem;
-                    continue;
-                }
-                wifiItem.setConnected(false);
-                listWifi.add(wifiItem);
+                bluetoothItem.setConnected(bluetooth.getBondState() == BluetoothDevice.BOND_BONDED);
+                listBluetooth.add(bluetoothItem);
             }
         }
-        Collections.sort(listWifi, new WifiItemComparator());
-        int wifiSelected = listWifiSelected.size();
-        if (wifiItemCurrent != null) {
-            if (wifiItemCurrent.getSelected())
-                listWifi.add(0, wifiItemCurrent);
-            else {
-                listWifi.add(wifiSelected, wifiItemCurrent);
-                wifiSelected++;
-            }
-        }
-        WifiAdapter wifiAdapter = new WifiAdapter(listWifi);
-        recyclerView.setAdapter(wifiAdapter);
+        Collections.sort(listBluetooth, new BluetoothItemComparator());
+        com.keltapps.soundprofile.views.adapters.BluetoothAdapter bluetoothAdapter = new com.keltapps.soundprofile.views.adapters.BluetoothAdapter(listBluetooth);
+        recyclerView.setAdapter(bluetoothAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
     }
 
     private void dialogDontShowAgain(CheckBox checkBox) {
@@ -174,20 +151,18 @@ public class WifiFragment extends Fragment {
         }
     }
 
-    private class WifiItemComparator implements Comparator<WifiItem> {
-        public int compare(WifiItem first, WifiItem second) {
+    private class BluetoothItemComparator implements Comparator<BluetoothItem> {
+        public int compare(BluetoothItem first, BluetoothItem second) {
             if (first.getSelected() && second.getSelected() || !first.getSelected() && !second.getSelected())
-                return first.getSSID().toUpperCase().compareTo(second.getSSID().toUpperCase());
+                return first.getName().toUpperCase().compareTo(second.getName().toUpperCase());
             if (first.getSelected())
                 return -1;
             else
                 return 1;
         }
     }
-
-    public interface OnWifiSelectedListener {
-        void onWifiSelected(ArrayList<String> listWifiSelected, int profilePosition);
+    public interface OnBluetoothSelectedListener {
+        void onBluetoothSelected(ArrayList<String> listBluetoothSelected, int profilePosition);
     }
-
 
 }

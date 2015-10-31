@@ -16,6 +16,7 @@ public class Profile {
     public Boolean[] days = new Boolean[7];
 
     public ArrayList<String> listWifiSelected = null;
+    public ArrayList<String> listBluetoothPaired = null;
     public ArrayList<ProfileSub> listProfileSubAdapters = null;
 
     public Boolean getExpandido() {
