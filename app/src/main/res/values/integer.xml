@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="alpha.light.text.primary">87</integer>
+    <integer name="alpha.light.text.secondary">54</integer>
+    <integer name="alpha.light.text.disabled">38</integer>
+</resources>

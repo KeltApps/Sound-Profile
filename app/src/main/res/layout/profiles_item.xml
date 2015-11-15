@@ -126,13 +126,12 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
@@ -141,6 +140,8 @@
                             android:id="@+id/profiles_item_daysL"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.monday"
                             android:textColor="@color/purple_300" />
@@ -149,19 +150,22 @@
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
-                        android:layout_weight="1"></View>
+                        android:layout_weight="1" />
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
 
                         <Button
+
                             android:id="@+id/profiles_item_daysM"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.tuesday"
                             android:textColor="@color/purple_300" />
@@ -173,16 +177,19 @@
                         android:layout_weight="1"></View>
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
 
                         <Button
+
                             android:id="@+id/profiles_item_daysX"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.wednesday"
                             android:textColor="@color/purple_300" />
@@ -194,16 +201,19 @@
                         android:layout_weight="1"></View>
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
 
                         <Button
+
                             android:id="@+id/profiles_item_daysJ"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.thursday"
                             android:textColor="@color/purple_300" />
@@ -215,16 +225,19 @@
                         android:layout_weight="1"></View>
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
 
                         <Button
+
                             android:id="@+id/profiles_item_daysV"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.friday"
                             android:textColor="@color/purple_300" />
@@ -236,16 +249,19 @@
                         android:layout_weight="1"></View>
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
 
                         <Button
+
                             android:id="@+id/profiles_item_daysS"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.saturday"
                             android:textColor="@color/purple_300" />
@@ -257,8 +273,8 @@
                         android:layout_weight="1"></View>
 
                     <com.keltapps.soundprofile.views.RippleView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         app:rv_centered="true"
                         app:rv_color="@color/grey_400">
@@ -267,6 +283,8 @@
                             android:id="@+id/profiles_item_daysD"
                             android:layout_width="@dimen/profiles_item_days"
                             android:layout_height="@dimen/profiles_item_days"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/roundedbutton"
                             android:text="@string/week.sunday"
                             android:textColor="@color/purple_300" />
@@ -441,7 +459,6 @@
                     android:id="@+id/profiles_item_imageviewMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
                     android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
             </com.keltapps.soundprofile.views.RippleView>
         </RelativeLayout>

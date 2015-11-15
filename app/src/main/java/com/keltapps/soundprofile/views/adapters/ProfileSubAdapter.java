@@ -51,23 +51,24 @@ public class ProfileSubAdapter extends RecyclerView.Adapter<ProfileSubAdapter.Vi
 
 
     public static class ViewHolderProfileSub extends RecyclerView.ViewHolder {
-        TextView nombre;
+        TextView name;
         CardView cardView;
-        ImageView vWwifi;
+        ImageView imageView;
 
         public ViewHolderProfileSub(View itemView) {
             super(itemView);
-            nombre = (TextView) itemView.findViewById(R.id.profiles_subitem_textview);
+            name = (TextView) itemView.findViewById(R.id.profiles_subitem_textview);
             cardView = (CardView) itemView.findViewById(R.id.profiles_subitem_cardview);
-            vWwifi =(ImageView) itemView.findViewById(R.id.profiles_subitem_imageView);
+            imageView =(ImageView) itemView.findViewById(R.id.profiles_subitem_imageView);
         }
 
         public void bindProfile(final ProfileSub item) {
-           // nombre.setText(item.getNombre());
+            name.setText(item.getName());
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                vWwifi.setTransitionName(item.getNombre());
+                imageView.setTransitionName(item.getName());
             }
+            imageView.setImageResource(item.getIntImageResource());
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,7 +77,7 @@ public class ProfileSubAdapter extends RecyclerView.Adapter<ProfileSubAdapter.Vi
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 
-                            String imageTransitionName = vWwifi.getTransitionName();
+                            String imageTransitionName = imageView.getTransitionName();
 
 
 
@@ -104,7 +105,7 @@ public class ProfileSubAdapter extends RecyclerView.Adapter<ProfileSubAdapter.Vi
                         FragmentTransaction ft = ProfilesFragment.fragmentManager.beginTransaction()
                                 .replace(R.id.profiles_fragment_container, fragmentTwo)
                                 .addToBackStack("transaction")
-                                .addSharedElement(vWwifi, "wifiImageView");
+                                .addSharedElement(imageView, "wifiImageView");
                         // Apply the transaction
                         ft.commit();
 

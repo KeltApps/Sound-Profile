@@ -36,7 +36,6 @@ public class ProfilesFragment extends Fragment {
     ProfileAdapter profileAdapter;
     public static FragmentManager fragmentManager;
     public static ProfilesFragment profilesFragment;
-    public static Float floatAlphaDisabled = (float) 0.38;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -214,23 +213,27 @@ public class ProfilesFragment extends Fragment {
     }
 
     public void updateWifiSelected(ArrayList<String> listWifiSelected, int profilePosition) {
+        if (profilePosition < 0)
+            return;
         listProfileAdapters.get(profilePosition).listWifiSelected = listWifiSelected;
         saveState(listProfileAdapters);
     }
 
     public void updateBluetoothSelected(ArrayList<String> listBluetoothSelected, int profilePosition) {
+        if (profilePosition < 0)
+            return;
         listProfileAdapters.get(profilePosition).listBluetoothPaired = listBluetoothSelected;
         saveState(listProfileAdapters);
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
         saveState(listProfileAdapters);
     }
 
     private void saveState(ArrayList<Profile> listProfileAdapters) {
-        for (Profile profile:listProfileAdapters)
+        for (Profile profile : listProfileAdapters)
             profile.setExpandido(false);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(ProfilesActivity.context);
         SharedPreferences.Editor editor = sharedPrefs.edit();

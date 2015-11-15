@@ -30,7 +30,6 @@ import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -218,10 +217,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 }
             });
             oSwitch.setChecked(item.getActivado());
-            oSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            oSwitch.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    item.setActivado(isChecked);
+                public void onClick(View v) {
+                    item.setActivado(((SwitchCompat)v).isChecked());
                 }
             });
             checkBox.setChecked(item.getTimeActive());
@@ -230,26 +229,26 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 public void onClick(View v) {
                     CheckBox checkBox = (CheckBox) v;
                     if (!checkBox.isChecked()) {
-                        buttonEditTime1.setAlpha(ProfilesFragment.floatAlphaDisabled);
-                        buttonEditTime2.setAlpha(ProfilesFragment.floatAlphaDisabled);
-                        textViewGuion.setAlpha(ProfilesFragment.floatAlphaDisabled);
+                        buttonEditTime1.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
+                        buttonEditTime2.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
+                        textViewGuion.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
 
                     } else {
-                        buttonEditTime1.setAlpha(1);
-                        buttonEditTime2.setAlpha(1);
-                        textViewGuion.setAlpha(1);
+                        buttonEditTime1.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
+                        buttonEditTime2.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
+                        textViewGuion.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
                     }
                     item.setTimeActive(checkBox.isChecked());
                 }
             });
             if (!item.getTimeActive()) {
-                buttonEditTime1.setAlpha(ProfilesFragment.floatAlphaDisabled);
-                buttonEditTime2.setAlpha(ProfilesFragment.floatAlphaDisabled);
-                textViewGuion.setAlpha(ProfilesFragment.floatAlphaDisabled);
+                buttonEditTime1.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
+                buttonEditTime2.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
+                textViewGuion.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
             } else {
-                buttonEditTime1.setAlpha(1);
-                buttonEditTime2.setAlpha(1);
-                textViewGuion.setAlpha(1);
+                buttonEditTime1.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
+                buttonEditTime2.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
+                textViewGuion.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
             }
             buttonEditTime1.setText(item.getInitialTime());
             buttonEditTime1.setOnClickListener(new View.OnClickListener() {
@@ -314,7 +313,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                         }
                     }, Integer.parseInt(sHora), Integer.parseInt(sMinutos), true);
 
-                    timePickerDialog.setButton(TimePickerDialog.BUTTON_NEUTRAL, "Ninguno", new DialogInterface.OnClickListener() {
+                    timePickerDialog.setButton(TimePickerDialog.BUTTON_NEUTRAL, ProfilesFragment.profilesFragment.getResources().getString(R.string.clock_none), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             buttonEditTime2.setText(ProfilesFragment.profilesFragment.getResources().getString(R.string.clock_none));
@@ -491,34 +490,45 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                     expandCardView(item);
                 }
             });
-
+            if(item.getExpandido())
+                imageViewMore.setRotation(180);
+            else
+                imageViewMore.setRotation(0);
             Random rand = new Random();
             int randomNum = rand.nextInt((10 - 1) + 1) + 1;
             item.listProfileSubAdapters = new ArrayList<ProfileSub>();
             ProfileSub profileSub = new ProfileSub();
-            profileSub.setNombre("Prueba item");
+            profileSub.setName("Mute");
+            profileSub.setIntImageResource(R.drawable.ic_volume_off_deep_purple_500_24dp);
             item.listProfileSubAdapters.add(profileSub);
             profileSub = new ProfileSub();
-            profileSub.setNombre("Prueba item 2 como ejemplo");
+            profileSub.setName("Brightness level");
+            profileSub.setIntImageResource(R.drawable.ic_brightness_high_deep_purple_500_24dp);
             item.listProfileSubAdapters.add(profileSub);
             profileSub = new ProfileSub();
-            profileSub.setNombre("Prueba item 3");
+            profileSub.setName("Mobile data");
             item.listProfileSubAdapters.add(profileSub);
+            profileSub.setIntImageResource(R.drawable.ic_swap_vert_deep_purple_500_24dp);
             profileSub = new ProfileSub();
-            profileSub.setNombre("Prueba item 4");
+            profileSub.setName("Prueba item 4");
+            profileSub.setIntImageResource(R.drawable.ic_swap_vert_deep_purple_500_24dp);
             item.listProfileSubAdapters.add(profileSub);
             if (randomNum > 4) {
                 profileSub = new ProfileSub();
-                profileSub.setNombre("Prueba item 5");
+                profileSub.setName("Prueba item 5");
+                profileSub.setIntImageResource(R.drawable.ic_swap_vert_deep_purple_500_24dp);
                 item.listProfileSubAdapters.add(profileSub);
                 profileSub = new ProfileSub();
-                profileSub.setNombre("Prueba item 6");
+                profileSub.setName("Prueba item 6");
+                profileSub.setIntImageResource(R.drawable.ic_swap_vert_deep_purple_500_24dp);
                 item.listProfileSubAdapters.add(profileSub);
                 profileSub = new ProfileSub();
-                profileSub.setNombre("Prueba item 7");
+                profileSub.setName("Prueba item 7");
+                profileSub.setIntImageResource(R.drawable.ic_swap_vert_deep_purple_500_24dp);
                 item.listProfileSubAdapters.add(profileSub);
                 profileSub = new ProfileSub();
-                profileSub.setNombre("Prueba item 8");
+                profileSub.setName("Prueba item 8");
+                profileSub.setIntImageResource(R.drawable.ic_swap_vert_deep_purple_500_24dp);
                 item.listProfileSubAdapters.add(profileSub);
             }
             final ProfileSubAdapter profileSubAdapter = new ProfileSubAdapter(item.listProfileSubAdapters);
@@ -538,11 +548,11 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
                 item.days[day] = !item.days[day];
             if (!item.days[day]) {
                 button.setTextColor(ProfilesFragment.profilesFragment.getResources().getColor(R.color.black));
-                button.setAlpha(ProfilesFragment.floatAlphaDisabled);
+                button.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_disabled)*0.01));
                 view.setBackgroundColor(Color.TRANSPARENT);
             } else {
                 button.setTextColor(ProfilesFragment.profilesFragment.getResources().getColor(R.color.purple_300));
-                button.setAlpha(1);
+                button.setAlpha((float)(ProfilesFragment.profilesFragment.getResources().getInteger(R.integer.alpha_light_text_primary)*0.01));
                 if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                     button.setBackgroundDrawable(ProfilesFragment.profilesFragment.getResources().getDrawable(R.drawable.roundedbutton));
                 } else {
@@ -617,9 +627,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         }
 
         private void expandCardView(Profile item) {
-            if (intOriginalHeight == 0) {
+            if (intOriginalHeight == 0)
                 intOriginalHeight = itemView.getHeight();
-            }
             setIsRecyclable(false);
             ValueAnimator valueAnimator;
             ValueAnimator valueAnimator2;

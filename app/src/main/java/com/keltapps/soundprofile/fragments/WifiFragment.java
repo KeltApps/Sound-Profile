@@ -36,7 +36,7 @@ import java.util.List;
  * Created by sergio on 10/10/15 for KelpApps.
  */
 public class WifiFragment extends Fragment {
-    OnWifiSelectedListener mCallback;
+   //  mCallback;
     public static WifiFragment wifiFragment;
     RecyclerView recyclerView;
     ArrayList<String> listWifiSelected;
@@ -56,9 +56,9 @@ public class WifiFragment extends Fragment {
         rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     try {
-                        mCallback = (OnWifiSelectedListener) getActivity();
+                        OnWifiSelectedListener mCallback = (OnWifiSelectedListener) getActivity();
                         ArrayList<String> listRefresh = new ArrayList<>();
                         for (WifiItem item : listWifi) {
                             if (!item.getSelected())

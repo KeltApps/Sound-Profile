@@ -54,7 +54,7 @@ public class BluetoothFragment extends Fragment {
         rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     try {
                         mCallback = (OnBluetoothSelectedListener) getActivity();
                         ArrayList<String> listRefresh = new ArrayList<>();

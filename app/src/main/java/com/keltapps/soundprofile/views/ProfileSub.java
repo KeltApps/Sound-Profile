@@ -4,15 +4,22 @@ package com.keltapps.soundprofile.views;
  * Created by sergio on 30/07/15 for KelpApps.
  */
 public class ProfileSub {
-    String nombre = null;
+    String name = null;
+    int intImageResource = 0;
 
-
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public int getIntImageResource() {
+        return intImageResource;
+    }
+
+    public void setIntImageResource(int intImageResource) {
+        this.intImageResource = intImageResource;
+    }
 }

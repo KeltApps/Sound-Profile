@@ -10,8 +10,8 @@
 
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
-        <item name="android:colorPrimaryDark">@color/purple_900</item>
-        <item name="android:colorPrimary">@color/purple_800</item>
+        <item name="android:colorPrimaryDark">@color/purple_700</item>
+        <item name="android:colorPrimary">@color/purple_500</item>
         <item name="colorSwitchThumbNormal">@color/grey_400</item>
         <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <item name="android:timePickerDialogTheme">@style/TimePickerTheme</item>
@@ -19,9 +19,9 @@
 
     <!-- ActionBar styles -->
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/purple_800</item>
+        <item name="android:background">@color/purple_500</item>
         <!-- Support library compatibility -->
-        <item name="background">@color/purple_800</item>
+        <item name="background">@color/purple_500</item>
     </style>
 
     <style name="TimePickerTheme" parent="android:Theme.Material.Dialog">
@@ -66,6 +66,10 @@
 
     <style name="CheckBoxWifi" parent="CustomActionBarTheme">
         <item name="colorAccent">@color/accent.pink_200
+        </item>
+    </style>
+    <style name="CheckBoxPurple" parent="CustomActionBarTheme">
+        <item name="colorAccent">@color/purple_300
         </item>
     </style>
     <style name="EditText" parent="CustomActionBarTheme">

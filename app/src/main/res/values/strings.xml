@@ -1,31 +1,32 @@
 <resources>
-    <string name="app_name">Sound Profile</string>
+    <string name="app_name">Tweaks</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_profiles">ProfilesActivity</string>
     <!-- Week days -->
-    <string name="week.monday">L</string>
-    <string name="week.tuesday">M</string>
-    <string name="week.wednesday">X</string>
-    <string name="week.thursday">J</string>
-    <string name="week.friday">V</string>
+    <string name="week.monday">M</string>
+    <string name="week.tuesday">T</string>
+    <string name="week.wednesday">W</string>
+    <string name="week.thursday">T</string>
+    <string name="week.friday">F</string>
     <string name="week.saturday">S</string>
-    <string name="week.sunday">D</string>
+    <string name="week.sunday">S</string>
     
-    <string name="information.wifi">Seleccione redes Wifi condicionantes</string>
-    <string name="information.bluetooth">Seleccione Bluetooth condicionantes</string>
+    <string name="information.wifi">Select conditional Wi-Fi networks</string>
+    <string name="information.bluetooth">Select conditional Bluetooth</string>
 
-    <string name="clock.none">Ninguno</string>
+    <string name="clock.none">None</string>
 
-    <string name="button.next">Siguiente</string>
+    <string name="button.next">Next</string>
 
-    <string name="menu.wifi.add">Añadir wifi</string>
-    <string name="dialog.wifi.add.possitive">Aceptar</string>
-    <string name="dialog.wifi.add.negative">Cancelar</string>
-    <string name="dialog.wifi.enabled">Adaptador Wifi apagado, para ver las redes disponibles es necesario que se encuentre activado, ¿Desea activarlo?</string>
-    <string name="dialog.wifi.dontshowagain">No mostrar de nuevo</string>
+    <string name="menu.wifi.add">Add wifi network</string>
+    <string name="dialog.wifi.add.possitive">Accept</string>
+    <string name="dialog.wifi.add.negative">Cancel</string>
+    <string name="dialog.wifi.enabled">Wi-Fi adapter is off, to show available networks it is needed to be activated. Do you want to do it?</string>
+    <string name="dialog.wifi.dontshowagain">Never ask again</string>
 
-    <string name="dialog.bluetooth.enabled">Adaptador Bluetooth apagado, para ver los dispositivos disponibles es necesario que se encuentre activado, ¿Desea activarlo?</string>
-    <string name="dialog.delete">¿Está seguro de que desea eliminarlo?</string>
+    <string name="dialog.bluetooth.enabled">Bluetooth adapter is off, to show available devices it is needed to be activated. Do you want to do it?</string>
+    <string name="dialog.delete">Are you sure you want to delete it?</string>
+    <string name="tweak.name">Tweak\'s name:</string>
 </resources>

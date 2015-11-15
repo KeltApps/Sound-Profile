@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200">
+    android:background="@color/grey_100">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,19 +15,19 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
+            android:alpha="0.87"
             android:gravity="left"
             android:paddingLeft="20dp"
-            android:text="Nombre del perfil: "
-            android:textColor="@color/purple_800"
-            android:textSize="23sp"
-            android:textStyle="bold" />
+            android:text="@string/tweak.name"
+            android:textColor="@color/black"
+            android:textSize="23sp" />
 
 
         <EditText
             android:id="@+id/slide_page_1_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp" />
 
@@ -35,7 +35,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:paddingLeft="30dp">
 
@@ -44,42 +44,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:theme="@style/CheckBoxPurple" />
 
             <Button
                 android:id="@+id/slide_page_1_buttonEditTime1"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
-                android:background="@android:color/transparent"
+                android:alpha="0.38"
+                android:background="?attr/selectableItemBackground"
                 android:text="09:00"
-                android:textColor="@color/grey_400"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/slide_page_1_textview_guion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:alpha="0.38"
                 android:text=" - "
-                android:textColor="@color/grey_400"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/slide_page_1_buttonEditTime2"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
-                android:background="@android:color/transparent"
+                android:alpha="0.38"
+                android:background="?attr/selectableItemBackground"
                 android:text="17:00"
-                android:textColor="@color/grey_400"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:paddingLeft="30dp">
 
@@ -94,15 +94,17 @@
                     android:id="@+id/slide_page_1_daysL"
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.monday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                android:layout_weight="1" />
 
             <com.keltapps.soundprofile.views.RippleView
                 android:layout_width="wrap_content"
@@ -112,18 +114,21 @@
                 app:rv_color="@color/purple_800">
 
                 <Button
+
                     android:id="@+id/slide_page_1_daysM"
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.tuesday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                android:layout_weight="1" />
 
             <com.keltapps.soundprofile.views.RippleView
                 android:layout_width="wrap_content"
@@ -133,18 +138,21 @@
                 app:rv_color="@color/purple_800">
 
                 <Button
+
                     android:id="@+id/slide_page_1_daysX"
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.wednesday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                android:layout_weight="1" />
 
             <com.keltapps.soundprofile.views.RippleView
                 android:layout_width="wrap_content"
@@ -154,18 +162,21 @@
                 app:rv_color="@color/purple_800">
 
                 <Button
+
                     android:id="@+id/slide_page_1_daysJ"
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.thursday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                android:layout_weight="1" />
 
             <com.keltapps.soundprofile.views.RippleView
                 android:layout_width="wrap_content"
@@ -176,17 +187,20 @@
 
                 <Button
                     android:id="@+id/slide_page_1_daysV"
+
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.friday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                android:layout_weight="1" />
 
             <com.keltapps.soundprofile.views.RippleView
                 android:layout_width="wrap_content"
@@ -196,45 +210,51 @@
                 app:rv_color="@color/purple_800">
 
                 <Button
+
                     android:id="@+id/slide_page_1_daysS"
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.saturday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></View>
+                android:layout_weight="1" />
 
             <com.keltapps.soundprofile.views.RippleView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_alignParentRight="true"
                 app:rv_centered="true"
                 app:rv_color="@color/purple_800">
 
                 <Button
+
                     android:id="@+id/slide_page_1_daysD"
                     android:layout_width="@dimen/profiles_item_days"
                     android:layout_height="@dimen/profiles_item_days"
-                    android:background="@drawable/roundedbutton"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/slide_page_1_daysS"
+                    android:background="@drawable/roundedbutton_purple_300"
                     android:text="@string/week.sunday"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/grey_100" />
             </com.keltapps.soundprofile.views.RippleView>
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"></View>
+                android:layout_height="1dp"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="10dp">
 
             <LinearLayout
@@ -247,9 +267,8 @@
                     android:id="@+id/slide_page_1_imagebuttonWifi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_signal_wifi_off_grey_400_48dp"
-                    android:transitionName="wifiImageView" />
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/ic_signal_wifi_off_grey_400_48dp" />
 
             </LinearLayout>
 
@@ -257,7 +276,6 @@
                 android:id="@+id/slide_page_1_rippleWifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:visibility="invisible"
                 app:rv_color="@color/purple_800">
 
@@ -275,19 +293,19 @@
                         android:paddingBottom="5dp"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:src="@drawable/ic_network_wifi_purple_800_24dp"
-                        android:transitionName="wifiImageView" />
+                        android:src="@drawable/ic_network_wifi_deep_purple_300_48dp" />
 
                     <TextView
-
                         android:id="@+id/slide_page_1_textviewWifi"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
+                        android:alpha="0.87"
+                        android:textColor="@color/black"
                         android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:text="WLAN_54"
-                        android:textColor="@color/purple_800" />
+                        android:gravity="left|center_vertical"
+                        android:text=""
+                        android:textSize="17sp" />
 
                 </LinearLayout>
             </com.keltapps.soundprofile.views.RippleView>
@@ -296,7 +314,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -308,14 +326,13 @@
                     android:id="@+id/slide_page_1_imagebuttonbluetooth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_bluetooth_disabled_grey_400_48dp"
-                    android:transitionName="wifiImageView" />
+                    android:background="?attr/selectableItemBackground"
+                    android:src="@drawable/ic_bluetooth_disabled_grey_400_48dp" />
 
             </LinearLayout>
 
             <com.keltapps.soundprofile.views.RippleView
-                android:id="@+id/profiles_item_rippleBluetooth"
+                android:id="@+id/slide_page_1_rippleBluetooth"
                 android:layout_width="wrap_content"
 
                 android:layout_height="wrap_content"
@@ -333,17 +350,19 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/ic_bluetooth_purple_800_24dp" />
+                        android:src="@drawable/ic_bluetooth_deep_purple_300_48dp" />
 
                     <TextView
                         android:id="@+id/slide_page_1_textviewbluetooth"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="20dp"
+                        android:alpha="0.87"
                         android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:text="CAR MULTIMEDIA"
-                        android:textColor="@color/purple_800" />
+                        android:gravity="left|center_vertical"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
                 </LinearLayout>
             </com.keltapps.soundprofile.views.RippleView>
         </RelativeLayout>
@@ -351,20 +370,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="10dp"
-
-            android:gravity="right"
-            android:paddingTop="20dp">
+            android:layout_height="wrap_content"
+            android:gravity="right">
 
             <Button
                 android:id="@+id/slide_page_1_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:backgroundTint="@color/purple_800"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/accent.pink_200"
                 android:text="@string/button.next"
                 android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
